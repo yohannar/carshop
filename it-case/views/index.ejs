@@ -3,12 +3,56 @@
 <head>
   <title>Carshop</title>
   <meta charset="utf-8">
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello there!</h1>
-  <form>
-    <button formaction="/employees" type="submit" formmethod="get">
+  <script>
+    //var convert=function(){
+      //var id=String(document.getElementById("id").value);
+      //var brand=document.getElementById("brand").value;
+      //var model=document.getElementById("model").value;
+      //var price=String(document.getElementById("price").value);
+      //var text='{"id":'+id+',"brand":'+brand+',"model":'+model+',"price":'+price'}';
+      //var obj=JSON.parse(text);
+      //document.getElementById("json").innerHTML=obj;
+    //}
+  </script>
+  <h1 class="header">Carshop</h1>
+  <h2 class="header">Welcome to the carshop web application</h2>
+  <p>Throgh this website you can communicate with your database, get specific chunks of data and add new data to your server</p>
+  <p id="start">Let's get started!</p>
+  <p>Start off by choosing any of the options below. To come back to this page, simply press "Back" in your browser</p>
+  <form class="get">
+    <p>If button "Get Employees" is pressed, it will direct you to a page showing all employees you have stored on your server and the
+      attributes assigned to each employee</p><br>
+    <button formaction="/employees" type="submit" formmethod="get" class="button">
     Get Employees</button>
   </form>
-</body>
+  <form class="get">
+    <button formaction="/cars" type="submit" formmethod="get" class="button">
+      Get Carmodels</button>
+  </form>
+  <form class="get">
+    <button formaction="/sales" type="submit" formmethod="get" class="button">
+      Get Sales Figures</buton>
+  </form>
+
+  <h2>Enter new Carmodel</h2>
+  <form action="" id="new-car-form">
+      ID:<br>
+      <input type="text" name="id" id="id"><br>
+      Brand:<br>
+      <input type="text" name="brand" id="brand"><br>
+      Model:<br>
+      <input type="text" name="model" id="model"><br>
+      Price ($):<br>
+      <input type="text" name="price" id="price"><br>
+      <button type="button" onclick="convert()">Convert to JSON</button>
+    </form>
+    <div>
+    <!--Here the serialized form data will be displayed-->
+    <p id="json"></p>
+    </div>
+  </body>
 </html>

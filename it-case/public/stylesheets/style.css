@@ -1,8 +1,62 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family:arial, sans-serif;
+  colour:red;
 }
 
+.header{
+  color:#ff8533;
+  text-align: center;
+  font-family:'Abril Fatface', cursive;
+}
+h1{
+  margin:0 auto;
+  font-size:70px;
+  width:500px;
+  border-bottom: solid #808080;
+}
+h2{
+  margin-bottom:50px;
+}
+
+p{
+  font-size:16px;
+  text-align:center;
+}
+
+#start{
+  font-size:25px;
+  font-variant:small-caps;
+}
+
+.get{
+  border:2px dashed #808080;
+  width:250px;
+  height: 250px;
+  margin:0 auto;
+  display:inline-block;
+}
+
+.button{
+  width:100px;
+  display:block;
+  margin:0 auto;
+  background-color:#f2f2f2;
+  border:1px solid #808080;
+  border-radius: 2px;
+  font-size:13px;
+  padding:9 21 9 21;
+  font-weight: bold;
+  color: #808080;
+  margin:30 5 0 5;
+}
+
+.button:hover{
+  background-color: #f2f2f2;
+  border:1px solid #80808;
+  border-radius: 2px;
+  font-weight: bolder;
+  color: black;
+}
 a {
   color: #00B7FF;
 }

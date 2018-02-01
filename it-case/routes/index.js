@@ -5,7 +5,7 @@ var router = express.Router();
 respond to client (web browser) requests*/
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { content:'Först'}); //The first 
+  res.render('index'); //The first 
 });
 
 module.exports = router;

@@ -7,6 +7,12 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var employees=require('./routes/employees');
+var cars=require('./routes/cars');
+//var new_car=require('./routes/newcar');
+var sales=require('./routes/newcar');
+var fs=require('fs'),
+  json;
 
 var app = express();
 
@@ -22,9 +28,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/employees',employees);
+app.route('/')
+  .get('/', function(req,res){
+  res.render('index')
+});
+app.route('/users')
+  .get('/', function(req, res, next) { //(Routing method)app.get för att hantera GET requests och app.post för att hantera POST requests
+    //The '/' is the root path we will match requests to (in this case home page)
+    res.send('respond with a resource'); //This one responds with a "respond with a resource" when a GET request is made to the homepage
+  });
+
+app.route('/employees')
+  .get('/',function(req,res,next){
+  res.json(json.carshop.employees); //Returns only the Employees
+})
+app.use('/cars',cars);
+//app.use('/newcar',new_car);
+app.use('/sales',sales);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,23 +66,23 @@ app.use(function(err, req, res, next) {
 app.listen(3000,function(){ //listen on port 3000. The home page will be displayed by using index.js
   console.log("Started on PORT 3000")
 });
+function readJsonFileSync(filepath, encoding){
 
-function onSubmit(){
-  switch(document.getElementByID("choices").selectedIndex){
-    case "Get Employees":
-      app.use('/employees',employees);
-      break;
-    case "Get Carmodels":
-      app.use('/cars',cars);
-      break;
-    case "Add new Carmodel":
-      app.use('/newcar',newcar);
-      break;
-    case "Get Employees' Sales":
-      app.use('/sales',sales);
-      break;
-    default:
-      break;
+    if (typeof (encoding) == 'undefined'){
+        encoding = 'utf8';
     }
-  }
+    var file = fs.readFileSync(filepath, encoding);
+    return JSON.parse(file);
+}
+
+function getConfig(file){
+
+    var filepath = __dirname + '/../' + file;
+    return readJsonFileSync(filepath);
+}
+
+//assume that config.json is in application root
+
+json = getConfig('data.json');
+
 module.exports = app;
